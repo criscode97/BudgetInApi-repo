@@ -2,7 +2,7 @@
  A django api that allows users to keep track of their expenses and income
  
  ## App Structure
- `
+ ```bash
  BudgetIn
 │   db.sqlite3
 │   listing.txt
@@ -44,7 +44,5 @@
            0003_alter_expenses_id_alter_income_id.py
            0004_alter_expenses_total_alter_income_total.py
            __init__.py
-        
-    `
-
+        ```
 
