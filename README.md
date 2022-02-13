@@ -252,5 +252,7 @@ url/income/YOUR_ITEM_ID
            0004_alter_expenses_total_alter_income_total.py
            __init__.py
 ```
+## UML
+![myapp_models](https://user-images.githubusercontent.com/92554847/153736482-7e84b97f-cac8-4ca4-b54b-85bbeb982ecb.png)
 
 
