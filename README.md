@@ -14,6 +14,10 @@
  - Users can GET a list of their current incomes or expenses through the /icome/ or /expenses/ routes respectively.
  - Users can access, update, post, or delete an item using the item id through the /expense/<int:id>/ route for expenses and /income/<int:id>/ route for incomes
  
+ ## Live Demo
+ 
+ ## Video Demo
+ 
  ## Usage
  
  ### User Registration:
