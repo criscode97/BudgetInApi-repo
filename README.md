@@ -1,5 +1,5 @@
 # BudgetIn API
- A django CRUD api that allows users to keep track of their expenses and income
+ A django CRUD api that allows users to keep track of their expenses and income.
  
  ## Technologies
 - Django v4.0
@@ -13,6 +13,201 @@
  - Users can POST incomes through the /income/ route or expenses through the /expenses/ route
  - Users can GET a list of their current incomes or expenses through the /icome/ or /expenses/ routes respectively.
  - Users can access, update, post, or delete an item using the item id through the /expense/<int:id>/ route for expenses and /income/<int:id>/ route for incomes
+ 
+ ## Usage
+ 
+ ### User Registration:
+url/auth/register/ 
+- method: POST
+- body: {
+          "username": [
+              "YOUR_USERNAME"
+          ],
+          "password": [
+              "YOUR_PASSWORD"
+          ],
+          "password2": [
+              "This field is required."
+          ],
+          "email": [
+              "YOUR_EMAIL"
+          ],
+          "first_name": [
+              "YOUR_FIRST_NAME"
+          ],
+          "last_name": [
+              "YOUR_LAST_NAME"
+          ]
+      }
+- response: {"username":["YOUR_USERNAME"],"password":["YOUR_PASSWORD"],"email": ["YOUR_EMAIL"],"first_name":[ "YOUR_FIRST_NAME" ],"last_name":[ "YOUR_LAST_NAME"]}
+
+### User token:
+url/auth/login 
+- method: POST
+- body: {
+            "username": [
+                "YOUR_USERNAME"
+            ],
+            "password": [
+                "YOUR_PASSWORD"
+            ]
+         }
+- response: {"refresh": "YOUR_REFRESH_TOKEN", "access": "YOUR_BEARER_tOKEN"}
+
+### List User Expenses
+url/expenses/
+- method: GET
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": 1,
+                   "title": "YOUR EXPENSE 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               },
+               {
+                   "id": 2,
+                   "title": "YOUR EXPENSE 2",
+                   "date": "2022-02-07T19:15:11.559046Z",
+                   "total": 99.99,
+                   "user": YOUR_USER_ID
+               }
+           ]
+           
+### List User Incomes
+url/income/
+- method: GET
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": 1,
+                   "title": "YOUR INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9999.99,
+                   "user": YOUR_USER_ID
+               },
+               {
+                   "id": 2,
+                   "title": "YOUR INCOME 2",
+                   "date": "2022-02-07T19:15:11.559046Z",
+                   "total": 999.99,
+                   "user": YOUR_USER_ID
+               }
+           ]
+           
+### Access An Expense Item by ID:
+url/expense/YOUR_ITEM_ID
+- method: GET
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": YOUR_ITEM_ID,
+                   "title": "YOUR INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9999.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+### Access An Income Item by ID:
+url/income/YOUR_ITEM_ID
+- method: GET
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": YOUR_ITEM_ID,
+                   "title": "YOUR INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9999.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+### Updating An Expense Item by ID:
+url/expense/YOUR_ITEM_ID
+- method: PUT
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- body:  [
+               {
+                   "title": "YOUR NEW EXPENSE 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+- response:   [
+               {
+                   "id" : "YOUR_ITEM_ID"
+                   "title": "YOUR NEW EXPENSE 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]             
+
+### Updating An Income Item by ID:
+url/income/YOUR_ITEM_ID
+- method: PUT
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- body:  [
+               {
+                   "title": "YOUR NEW INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+- response:   [
+               {
+                   "id" : "YOUR_ITEM_ID"
+                   "title": "YOUR NEW INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]             
+
+### Delete An Expense Item by ID:
+url/expense/YOUR_ITEM_ID
+-method: DELETE
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": YOUR_ITEM_ID
+                   "title": "YOUR NEW EXPENSE 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]         
+
+### Delete An Income Item by ID:
+url/income/YOUR_ITEM_ID
+- method: DELETE
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- response: [
+               {
+                   "id": YOUR_ITEM_ID
+                   "title": "YOUR NEW INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9.99,
+                   "user": YOUR_USER_ID
+               }
+             ]         
+        
+### User Summary
+ url/user-budget/ 
+ - method: GET
+ - headers: "Authorization: Bearer YOUR_TOKEN"
+ - response: {
+    "total": YOUR_INCOME_TOTAL - YOUR_TOTAL_EXPENSES,
+    "expenses": YOUR_TOTAL_EXPENSES,
+    "income": YOUR_INCOME_TOTAL
+}
+ 
  ## App Structure
  ```bash
  BudgetIn
