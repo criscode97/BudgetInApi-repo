@@ -176,7 +176,7 @@ url/income/YOUR_ITEM_ID
 
 ### Delete An Expense Item by ID:
 url/expense/YOUR_ITEM_ID
--method: DELETE
+- method: DELETE
 - headers: "Authorization: Bearer YOUR_TOKEN"
 - response: [
                {
