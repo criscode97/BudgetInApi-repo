@@ -15,8 +15,10 @@
  - Users can access, update, post, or delete an item using the item id through the /expense/<int:id>/ route for expenses and /income/<int:id>/ route for incomes
  
  ## Live Demo
+ Upcomming
  
  ## Video Demo
+ https://youtu.be/2_4OXnU8s8w
  
  ## Usage
  
@@ -24,37 +26,37 @@
 url/auth/register/ 
 - method: POST
 - body: {
-          "username": [
+          "username": 
               "YOUR_USERNAME"
-          ],
-          "password": [
+          ,
+          "password": 
               "YOUR_PASSWORD"
-          ],
-          "password2": [
+          ,
+          "password2": 
               "This field is required."
-          ],
-          "email": [
+          ,
+          "email": 
               "YOUR_EMAIL"
-          ],
-          "first_name": [
+          ,
+          "first_name": 
               "YOUR_FIRST_NAME"
-          ],
-          "last_name": [
+          ,
+          "last_name": 
               "YOUR_LAST_NAME"
-          ]
+   
       }
-- response: {"username":["YOUR_USERNAME"],"password":["YOUR_PASSWORD"],"email": ["YOUR_EMAIL"],"first_name":[ "YOUR_FIRST_NAME" ],"last_name":[ "YOUR_LAST_NAME"]}
+- response: {"username":"YOUR_USERNAME","password":"YOUR_PASSWORD","email": "YOUR_EMAIL","first_name":"YOUR_FIRST_NAME","last_name":"YOUR_LAST_NAME"}
 
 ### User token:
 url/auth/login 
 - method: POST
 - body: {
-            "username": [
+            "username": 
                 "YOUR_USERNAME"
-            ],
-            "password": [
+            ,
+            "password": 
                 "YOUR_PASSWORD"
-            ]
+            
          }
 - response: {"refresh": "YOUR_REFRESH_TOKEN", "access": "YOUR_BEARER_tOKEN"}
 
@@ -99,7 +101,50 @@ url/income/
                    "user": YOUR_USER_ID
                }
            ]
-           
+### Posting An Expense
+url/expense/  or url/expenses/
+- method: POST
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- body : [
+               {
+                   "title": "YOUR EXPENSE 1",
+                   "total": 9999.99,
+               }
+             ]
+             
+- response: [
+               {
+                   "id": YOUR_ITEM_ID,
+                   "title": "YOUR EXPENSE 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9999.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+### Posting An Income
+
+url/INCOME/
+- method: POST
+- headers: "Authorization: Bearer YOUR_TOKEN"
+- body : [
+               {
+                   "title": "YOUR INCOME 1",
+                   "total": 9999.99,
+               }
+             ]
+             
+- response: [
+               {
+                   "id": YOUR_ITEM_ID,
+                   "title": "YOUR INCOME 1",
+                   "date": "2022-02-07T19:14:16.263675Z",
+                   "total": 9999.99,
+                   "user": YOUR_USER_ID
+               }
+             ]
+             
+             
 ### Access An Expense Item by ID:
 url/expense/YOUR_ITEM_ID
 - method: GET
